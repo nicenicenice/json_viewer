@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">JsonViewer</string>
+    <string name="show_json_data">Show json data</string>
+    <string name="failed_getting_data">Failed to retrieve data from the service</string>
+    <string name="failed_conversion_to_json">Failed to convert data to json format</string>
+    <string name="progress_bar_string">Please wait...</string>
+    <string name="unexpected_error_message">an unexpected error occurred</string>
+</resources>
