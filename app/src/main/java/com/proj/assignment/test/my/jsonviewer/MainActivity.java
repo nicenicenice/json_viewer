@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private AsyncTask<Void, Void, String> mDataLoadFromServiceTask;
     ProgressDialog progress;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +27,7 @@ public class MainActivity extends AppCompatActivity {
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progress = new ProgressDialog(MainActivity.this);
-                progress.setMessage(getResources().getString(R.string.progress_bar_string));
-                progress.setCancelable(false);
-                progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                initializeProgresBar();
                 progress.show();
 
                 loadDataFromService();
@@ -73,5 +71,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadDataFromService() {
         mDataLoadFromServiceTask = new DownloadJsonTask().execute();
+    }
+
+    private void initializeProgresBar() {
+        progress = new ProgressDialog(MainActivity.this);
+        progress.setMessage(getResources().getString(R.string.progress_bar_string));
+        progress.setCancelable(false);
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
     }
 }

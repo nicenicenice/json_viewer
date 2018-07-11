@@ -1,22 +1,12 @@
 package com.proj.assignment.test.my.jsonviewer;
 
-import android.app.ActionBar;
+
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,10 +15,10 @@ import com.proj.assignment.test.my.jsonviewer.utils.Utils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
+import static com.proj.assignment.test.my.jsonviewer.DataContract.*;
 
 public class JsonViewerActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -57,9 +47,9 @@ public class JsonViewerActivity extends AppCompatActivity implements View.OnClic
             try {
                 final JSONObject jsonItem = jsonArray.getJSONObject(i);
 
-                String uniqNameOfItem = jsonItem.getInt("id") + "_"
-                        + jsonItem.getString("first_name")
-                        + "_" + jsonItem.getString("last_name");
+                String uniqNameOfItem = jsonItem.getInt(ID) + "_"
+                        + jsonItem.getString(FIRST_NAME)
+                        + "_" + jsonItem.getString(LAST_NAME);
 
                 dataMap.put(uniqNameOfItem, jsonItem);
 

@@ -9,6 +9,8 @@ import com.proj.assignment.test.my.jsonviewer.utils.Utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static com.proj.assignment.test.my.jsonviewer.DataContract.*;
+
 public class DetailJsonInfo extends AppCompatActivity {
 
     @Override
@@ -28,25 +30,26 @@ public class DetailJsonInfo extends AppCompatActivity {
         }
 
         try {
+
             TextView firstNameTextView = findViewById(R.id.first_name);
-            String firstName = jsonArray.getString("first_name");
-            firstNameTextView.setText("first name : " + firstName);
+            String firstName = jsonArray.getString(FIRST_NAME);
+            firstNameTextView.setText(FIRST_NAME + " : " + firstName);
 
             TextView lastNameTextView = findViewById(R.id.last_name);
-            String lastName = jsonArray.getString("last_name");
-            lastNameTextView.setText("last name : " + lastName);
+            String lastName = jsonArray.getString(LAST_NAME);
+            lastNameTextView.setText(LAST_NAME + " : " + lastName);
 
             TextView emailTextView = findViewById(R.id.email);
-            String email = jsonArray.getString("email");
-            emailTextView.setText("email : " + email);
+            String email = jsonArray.getString(EMAIL);
+            emailTextView.setText(EMAIL + " : " + email);
 
             TextView genderTextView = findViewById(R.id.gender);
-            String gender = jsonArray.getString("gender");
-            genderTextView.setText("gender : " + gender);
+            String gender = jsonArray.getString(GENDER);
+            genderTextView.setText(GENDER + " : " + gender);
 
             TextView ipAddressTextView = findViewById(R.id.ip_address);
-            String ipAddress = jsonArray.getString("ip_address");
-            ipAddressTextView.setText("ip address : " + ipAddress);
+            String ipAddress = jsonArray.getString(IP_ADDRESS);
+            ipAddressTextView.setText(IP_ADDRESS + " : " + ipAddress);
 
             setTitle(firstName + " " + lastName);
         } catch (JSONException e) {
