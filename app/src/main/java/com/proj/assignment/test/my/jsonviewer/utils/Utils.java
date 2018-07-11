@@ -14,17 +14,14 @@ import okhttp3.Response;
 public class Utils {
     private static String SERVICE_URL = "http://www.mocky.io/v2/5b45ced42f00008900420dd9";
 
-    @Nullable
     public static JSONArray getJsonArrayByConvertationString(String rawJsonData) throws JSONException {
         return new JSONArray(rawJsonData);
     }
 
-    @Nullable
     public static JSONObject getJsonObjByConvertationString(String rawJsonData) throws JSONException {
         return new JSONObject(rawJsonData);
     }
 
-    @Nullable
     public static String getStringWithAllJsonData(JSONObject jsonItem) {
 
         try {
