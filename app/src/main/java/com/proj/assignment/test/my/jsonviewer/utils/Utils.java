@@ -3,6 +3,10 @@ package com.proj.assignment.test.my.jsonviewer.utils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -17,6 +21,30 @@ public class Utils {
 
     public static JSONObject getJsonObjByConvertationString(String rawJsonData) throws JSONException {
         return new JSONObject(rawJsonData);
+    }
+
+//    public static List<String> getNameOdItemsList(JSONArray jsonArray) {
+//        List<String> result = new ArrayList<>();
+//        for (int i = 0 ; i < jsonArray.length(); i++) {
+//            try {
+//                final JSONObject jsonItem = jsonArray.getJSONObject(i);
+//                String nameOfItem = Utils.getNameItemByJsonObj(jsonItem);
+//                result.add(nameOfItem);
+//            } catch (JSONException e) { }
+//        }
+//        return result;
+//    }
+
+    public static String getNameItemByJsonObj(JSONObject jsonItem) {
+        try {
+            StringBuilder nameOfItemSb = new StringBuilder();
+            nameOfItemSb.append(jsonItem.getInt(ID));
+            nameOfItemSb.append("_");
+            nameOfItemSb.append(jsonItem.getString(FIRST_NAME));
+            nameOfItemSb.append("_");
+            nameOfItemSb.append(jsonItem.getString(LAST_NAME));
+            return nameOfItemSb.toString();
+        } catch (JSONException e) { return null; }
     }
 
     public static String getStringWithAllJsonData(JSONObject jsonItem) {

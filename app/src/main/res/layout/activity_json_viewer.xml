@@ -6,18 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".JsonViewerActivity">
 
-    <ScrollView
-        android:id="@+id/scroll_view"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/scroll_view_lauout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-        </LinearLayout>
-    </ScrollView>
-
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>

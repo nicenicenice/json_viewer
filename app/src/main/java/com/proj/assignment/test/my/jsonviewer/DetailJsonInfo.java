@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import static com.proj.assignment.test.my.jsonviewer.DataContract.*;
 
 public class DetailJsonInfo extends AppCompatActivity {
+    final String JSON_RAW_DATA_ITEM = "jsonItemInStr";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,36 +20,45 @@ public class DetailJsonInfo extends AppCompatActivity {
         setContentView(R.layout.activity_detail_json_info);
 
         Intent intent = getIntent();
-        JSONObject jsonArray;
+        String jsonItemInString = intent.getStringExtra(JSON_RAW_DATA_ITEM);
+        JSONObject jsonDetailItem = getJsonObjByString(jsonItemInString);
+
+        showDetailInfoOnScreen(jsonDetailItem);
+    }
+
+    private JSONObject getJsonObjByString(String rawJsonInString) {
         try {
-            String jsonItemInString = intent.getStringExtra("jsonItemInStr");
-            jsonArray = Utils.getJsonObjByConvertationString(jsonItemInString);
+            return Utils.getJsonObjByConvertationString(rawJsonInString);
         } catch (JSONException e) {
             String messageToShow = getResources().getString(R.string.failed_conversion_to_json);
             Toast.makeText(getBaseContext(), messageToShow, Toast.LENGTH_LONG).show();
-            return;
+            return null;
         }
+    }
+
+    private void showDetailInfoOnScreen(JSONObject jsonDetailItem) {
+        if (jsonDetailItem == null)
+            return;
 
         try {
-
             TextView firstNameTextView = findViewById(R.id.first_name);
-            String firstName = jsonArray.getString(FIRST_NAME);
+            String firstName = jsonDetailItem.getString(FIRST_NAME);
             firstNameTextView.setText(FIRST_NAME + " : " + firstName);
 
             TextView lastNameTextView = findViewById(R.id.last_name);
-            String lastName = jsonArray.getString(LAST_NAME);
+            String lastName = jsonDetailItem.getString(LAST_NAME);
             lastNameTextView.setText(LAST_NAME + " : " + lastName);
 
             TextView emailTextView = findViewById(R.id.email);
-            String email = jsonArray.getString(EMAIL);
+            String email = jsonDetailItem.getString(EMAIL);
             emailTextView.setText(EMAIL + " : " + email);
 
             TextView genderTextView = findViewById(R.id.gender);
-            String gender = jsonArray.getString(GENDER);
+            String gender = jsonDetailItem.getString(GENDER);
             genderTextView.setText(GENDER + " : " + gender);
 
             TextView ipAddressTextView = findViewById(R.id.ip_address);
-            String ipAddress = jsonArray.getString(IP_ADDRESS);
+            String ipAddress = jsonDetailItem.getString(IP_ADDRESS);
             ipAddressTextView.setText(IP_ADDRESS + " : " + ipAddress);
 
             setTitle(firstName + " " + lastName);
